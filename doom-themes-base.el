@@ -179,6 +179,23 @@
     (annotate-annotation-secondary :background (doom-blend green bg 0.1)     :foreground doc-comments)
     (annotate-highlight            :background (doom-blend highlight bg 0.1) :underline highlight)
     (annotate-highlight-secondary  :background (doom-blend green bg 0.1)     :underline green)
+    ;;;; ansi-color <built-in>
+    (ansi-color-black          :foreground bg      :background bg)
+    (ansi-color-red            :foreground red     :background red)
+    (ansi-color-green          :foreground green   :background green)
+    (ansi-color-yellow         :foreground yellow  :background yellow)
+    (ansi-color-blue           :foreground blue    :background blue)
+    (ansi-color-magenta        :foreground magenta :background magenta)
+    (ansi-color-cyan           :foreground cyan    :background cyan)
+    (ansi-color-white          :foreground fg      :background fg)
+    (ansi-color-bright-black   :foreground base0   :background base2)
+    (ansi-color-bright-red     :foreground (doom-lighten red 0.15)     :background (doom-lighten red 0.15))
+    (ansi-color-bright-green   :foreground (doom-lighten green 0.15)   :background (doom-lighten green 0.15))
+    (ansi-color-bright-yellow  :foreground (doom-lighten yellow 0.15)  :background (doom-lighten yellow 0.15))
+    (ansi-color-bright-blue    :foreground (doom-lighten blue 0.15)    :background (doom-lighten blue 0.15))
+    (ansi-color-bright-magenta :foreground (doom-lighten magenta 0.15) :background (doom-lighten magenta 0.15))
+    (ansi-color-bright-cyan    :foreground (doom-lighten cyan 0.15)    :background (doom-lighten cyan 0.15))
+    (ansi-color-bright-white   :foreground base8   :background base8)
     ;;;; anzu
     (anzu-replace-highlight :background base0 :foreground red   :weight 'bold :strike-through t)
     (anzu-replace-to        :background base0 :foreground green :weight 'bold)
@@ -284,7 +301,7 @@
     ;;;; company-box
     (company-box-candidate :foreground fg)
     ;;;; corfu
-    (corfu-background :inherit 'tooltip)
+    (corfu-default :inherit 'tooltip)
     (corfu-current :background bg :foreground fg)
     ;;;; circe
     (circe-fool :foreground doc-comments)
@@ -795,6 +812,13 @@
     (selectrum-current-candidate :background region :distant-foreground nil :extend t)
     ;;;; vertico
     (vertico-current :background region :distant-foreground nil :extend t)
+    ;;;; vertico-posframe
+    ;;(vertico-posframe :inherit 'default)
+    (vertico-posframe-border :background grey)
+    (vertico-posframe-border-2 :background red)
+    (vertico-posframe-border-3 :background green)
+    (vertico-posframe-border-4 :background blue)
+    (vertico-posframe-border-fallback :background yellow)
     ;;;; jabber
     (jabber-activity-face          :foreground red   :weight 'bold)
     (jabber-activity-personal-face :foreground blue  :weight 'bold)
@@ -958,11 +982,11 @@
     (message-header-xheader    :foreground doc-comments)
     (message-separator         :foreground comments)
     (message-mml               :foreground comments :slant 'italic)
-    (message-cited-text        :foreground magenta)
-    (message-cited-text-1      :inherit 'gnus-cite-1)
-    (message-cited-text-2      :inherit 'gnus-cite-2)
-    (message-cited-text-3      :inherit 'gnus-cite-3)
-    (message-cited-text-4      :inherit 'gnus-cite-4)
+    ((message-cited-text   &inherit gnus-cite-1))
+    ((message-cited-text-1 &inherit gnus-cite-2))
+    ((message-cited-text-2 &inherit gnus-cite-3))
+    ((message-cited-text-3 &inherit gnus-cite-4))
+    ((message-cited-text-4 &inherit gnus-cite-5))
     ;;;; mic-paren
     (paren-face-match    :foreground red   :background base0 :weight 'ultra-bold)
     (paren-face-mismatch :foreground base0 :background red   :weight 'ultra-bold)
@@ -1259,8 +1283,6 @@
     ;;;; solaire-mode
     (solaire-default-face  :inherit 'default :background bg-alt)
     (solaire-hl-line-face  :inherit 'hl-line :background bg :extend t)
-    ((solaire-mode-line-face &inherit mode-line))
-    ((solaire-mode-line-inactive-face &inherit mode-line-inactive))
     ;;;; spaceline
     (spaceline-highlight-face   :background highlight)
     (spaceline-modified         :background vc-modified)
@@ -1374,8 +1396,6 @@
     ;;;; volatile-highlights
     (vhl/default-face :background grey)
     ;;;; vterm
-    (vterm               :foreground fg)
-    (vterm-color-default :foreground fg)
     (vterm-color-black   :background (doom-lighten base0 0.25)   :foreground base0)
     (vterm-color-red     :background (doom-lighten red 0.25)     :foreground red)
     (vterm-color-green   :background (doom-lighten green 0.25)   :foreground green)
@@ -1464,7 +1484,7 @@
 ;;;; --- Package variables ------------------
 (defvar doom-themes-base-vars
   '(
-    ;;;; ansi-color <built-in>
+    ;;;; ansi-color <built-in> DEPRECATED
     (ansi-color-names-vector
      (vconcat (mapcar #'doom-color '(bg red green yellow blue magenta cyan fg))))
     ;;;; rustic <modes:rustic-mode>
